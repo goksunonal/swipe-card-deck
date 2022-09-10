@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":lib"))
     implementation(Dependencies.AndroidX.CORE, Versions.X_CORE)
     implementation(Dependencies.AndroidX.COMPAT, Versions.X_COMPAT)
     implementation(Dependencies.MATERIAL, Versions.MATERIAL)

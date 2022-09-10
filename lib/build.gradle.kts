@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -25,6 +26,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -32,6 +36,7 @@ dependencies {
     implementation(Dependencies.AndroidX.COMPAT, Versions.X_COMPAT)
     implementation(Dependencies.MATERIAL, Versions.MATERIAL)
     implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT, Versions.X_CONSTRAINT_LAYOUT)
+    implementation("io.coil-kt:coil:2.2.1")
     testImplementation(Dependencies.Test.JUNIT, Versions.JUNIT)
     androidTestImplementation(Dependencies.Test.EXT_JUNIT, Versions.EXT_JUNIT)
     androidTestImplementation(Dependencies.Test.ESPRESSO_CORE, Versions.ESPRESSO_CORE)
