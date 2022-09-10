@@ -1,0 +1,2 @@
+rootProject.name = "ProfileCardSwipe"
+include(":app", ":lib")
