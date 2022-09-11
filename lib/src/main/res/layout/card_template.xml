@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/RoundedCardView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="32dp"
-    app:cardElevation="8dp"
-    app:cardMaxElevation="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="card"
+            type="com.profile.lib.Card" />
+    </data>
+
+    <com.profile.lib.view.SwipeMaterialCardView
+        android:id="@+id/cardSwipeView"
+        style="@style/RoundedCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cardview_dark_background">
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="8dp"
+        app:strokeColor="#6b8496"
+        app:strokeWidth="4dp">
 
-        <View
-            android:id="@+id/view"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#D8EDF6"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:contentDescription="Profile Image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/person_example_2"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="John Doe"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            android:background="@color/cardview_dark_background">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:drawablePadding="4dp"
-            android:text="Live And Human"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            app:drawableStartCompat="@drawable/ic_account_circle"
-            app:drawableTint="#FF0000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#FFFFFf"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:contentDescription="Profile Image"
+                android:scaleType="centerCrop"
+                android:src="@{card.image}"
+                app:layout_constraintBottom_toTopOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{card.name}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="4dp"
+                android:text="@{card.status}"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                app:drawableStartCompat="@drawable/ic_account_circle"
+                app:drawableTint="#FF0000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="4dp"
-            android:text="Çankaya, Beytepe Mahallesi"
-            android:textSize="20sp"
-            app:drawableStartCompat="@drawable/ic_location_pin"
-            app:drawableTint="#FF0000"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@{card.location.toString()}"
+                android:textSize="20sp"
+                app:drawableStartCompat="@drawable/ic_location_pin"
+                app:drawableTint="#FF0000"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.profile.lib.view.SwipeMaterialCardView>
+</layout>
