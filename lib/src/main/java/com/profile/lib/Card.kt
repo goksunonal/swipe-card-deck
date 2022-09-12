@@ -1,10 +1,8 @@
 package com.profile.lib
 
-import android.location.Location
-
 data class Card(
-    val image: Int,
+    val image: String,
     val name: String,
     val status: String,
-    val location: Location
+    val location: String
 )

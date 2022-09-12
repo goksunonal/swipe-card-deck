@@ -20,11 +20,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -37,7 +37,7 @@ dependencies {
     implementation(Dependencies.AndroidX.COMPAT, Versions.X_COMPAT)
     implementation(Dependencies.MATERIAL, Versions.MATERIAL)
     implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT, Versions.X_CONSTRAINT_LAYOUT)
-    implementation("io.coil-kt:coil:2.2.1")
+    implementation("com.squareup.picasso:picasso:2.8")
     testImplementation(Dependencies.Test.JUNIT, Versions.JUNIT)
     androidTestImplementation(Dependencies.Test.EXT_JUNIT, Versions.EXT_JUNIT)
     androidTestImplementation(Dependencies.Test.ESPRESSO_CORE, Versions.ESPRESSO_CORE)

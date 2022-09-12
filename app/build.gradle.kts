@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-kapt")
+    kotlin("plugin.serialization").version("1.7.10")
 }
 
 android {
@@ -24,8 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -45,4 +46,11 @@ dependencies {
     testImplementation(Dependencies.Test.JUNIT, Versions.JUNIT)
     androidTestImplementation(Dependencies.Test.EXT_JUNIT, Versions.EXT_JUNIT)
     androidTestImplementation(Dependencies.Test.ESPRESSO_CORE, Versions.ESPRESSO_CORE)
+    implementation("io.ktor:ktor-client-core:2.1.1")
+    implementation("io.ktor:ktor-client-serialization:2.1.1")
+    implementation("io.ktor:ktor-client-logging:2.1.1")
+    implementation("io.ktor:ktor-client-android:2.1.1")
+    implementation("io.ktor:ktor-client-content-negotiation:2.1.1")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.1.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 }

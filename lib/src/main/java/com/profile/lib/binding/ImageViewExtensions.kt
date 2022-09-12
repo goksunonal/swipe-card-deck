@@ -4,20 +4,13 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
-import coil.load
+import com.squareup.picasso.Picasso
 
-@BindingAdapter("android:src", "default", requireAll = false)
-fun ImageView.loadImage(image: Drawable?, default: Drawable?) {
-    this.load(image) {
-        placeholder(default)
-    }
-}
-
-@BindingAdapter("android:src", "default", requireAll = false)
-fun ImageView.loadImage(image: String?, default: Drawable?) {
-    this.load(image) {
-        placeholder(default)
-    }
+@BindingAdapter("android:src")
+fun ImageView.loadImage(image: String?) {
+    Picasso.get()
+        .load(image)
+        .into(this)
 }
 
 @BindingAdapter("android:src", "default", requireAll = false)

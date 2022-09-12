@@ -24,7 +24,9 @@ class CardDeckLayout : FrameLayout {
     )
 
     fun addCards(list: List<Card>) {
-        list.forEach { card ->
+        removeAllViews()
+        addedViews.clear()
+        list.asReversed().forEach { card ->
             this.post {
                 val inflater =
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
