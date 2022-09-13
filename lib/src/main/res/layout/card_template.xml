@@ -12,9 +12,12 @@
     <com.profile.lib.view.SwipeMaterialCardView
         android:id="@+id/cardSwipeView"
         style="@style/RoundedCardView"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
+        android:layout_margin="32dp"
         app:cardElevation="8dp"
         app:cardMaxElevation="8dp"
         app:strokeColor="#6b8496"

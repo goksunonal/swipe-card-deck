@@ -56,6 +56,35 @@ class CardDeckLayout : FrameLayout {
         }
     }
 
+    fun addCard(card: Card) {
+        this.post {
+            val inflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val binding: CardTemplateBinding = CardTemplateBinding.inflate(inflater)
+            val params = LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+            )
+            params.gravity = Gravity.CENTER
+            params.marginStart = 40.dp
+            params.marginEnd = 40.dp
+            binding.card = card
+            (binding.root as SwipeMaterialCardView).setCardSwipeListener(object :
+                CardSwipeListener {
+                override fun onLeftOutside() {
+                    removeView()
+                }
+
+                override fun onRightOutside() {
+                    removeView(false)
+                }
+
+            })
+            addedViews.add(binding.root as SwipeMaterialCardView)
+            addView(binding.root, params)
+        }
+    }
+
     fun removeView(isLeft: Boolean = true) {
         val lastView = addedViews.last()
         val hide = TranslateAnimation(

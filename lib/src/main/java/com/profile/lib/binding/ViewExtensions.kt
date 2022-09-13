@@ -4,6 +4,10 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter("android:visibility")
-fun View.setVisibility(isVisible: Boolean): Int {
-    return if (isVisible) View.VISIBLE else View.GONE
+fun View.setVisibility(value: Boolean) {
+    this.visibility = if (value) {
+        View.VISIBLE
+    } else {
+        View.GONE
+    }
 }

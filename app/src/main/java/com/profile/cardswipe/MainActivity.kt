@@ -1,32 +1,20 @@
 package com.profile.cardswipe
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.profile.lib.CardDeckLayout
+import androidx.fragment.app.commit
+import com.profile.cardswipe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel = MainViewModel(RickMortyApi())
-    lateinit var recyclerView: CardDeckLayout
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        recyclerView = findViewById(R.id.recyclerView)
-        val buttonPrev = findViewById<Button>(R.id.button_prev)
-        val buttonNext = findViewById<Button>(R.id.button_next)
-
-        viewModel.getCharactersModel(true)
-        viewModel.liveData.observe(this) {
-            recyclerView.addCards(it)
-        }
-
-        buttonNext.setOnClickListener {
-            viewModel.getCharactersModel(true)
-        }
-
-        buttonPrev.setOnClickListener {
-            viewModel.getCharactersModel(false)
+        setContentView(binding.root)
+        if (supportFragmentManager.isDestroyed.not()) {
+            supportFragmentManager.commit {
+                this.replace(R.id.container, CardDeckFragment(), "tag")
+            }
         }
     }
 }
