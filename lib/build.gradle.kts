@@ -8,7 +8,7 @@ android {
     compileSdk = 32
 
     defaultConfig {
-        minSdk =  21
+        minSdk = 21
         targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -38,6 +38,7 @@ dependencies {
     implementation(Dependencies.MATERIAL, Versions.MATERIAL)
     implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT, Versions.X_CONSTRAINT_LAYOUT)
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("androidx.paging:paging-runtime:3.1.1")
     testImplementation(Dependencies.Test.JUNIT, Versions.JUNIT)
     androidTestImplementation(Dependencies.Test.EXT_JUNIT, Versions.EXT_JUNIT)
     androidTestImplementation(Dependencies.Test.ESPRESSO_CORE, Versions.ESPRESSO_CORE)

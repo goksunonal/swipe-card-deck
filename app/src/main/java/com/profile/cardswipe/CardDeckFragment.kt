@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.profile.cardswipe.databinding.FragmentDeckBinding
+import com.profile.lib.CardListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -25,14 +26,14 @@ class CardDeckFragment : Fragment(R.layout.fragment_deck) {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        val adapter = MovieListAdapter()
+        val adapter = CardListAdapter()
         binding.recyclerView.adapter = adapter
         val layoutManager = object : LinearLayoutManager(context) {
             override fun canScrollVertically(): Boolean {
                 return true
             }
         }
-        layoutManager.reverseLayout = true
+        //layoutManager.reverseLayout = true
 //        layoutManager.stackFromEnd = true
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.addItemDecoration(OverlapDecoration())
@@ -68,13 +69,7 @@ class CardDeckFragment : Fragment(R.layout.fragment_deck) {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                // of the item at that position.
                 val position = viewHolder.absoluteAdapterPosition
-
-                // this method is called when item is swiped.
-                // below line is to remove item from our array list.
-
-                // below line is to notify our item is removed from adapter.
                 adapter.notifyItemRemoved(position)
             }
         }).attachToRecyclerView(binding.recyclerView)

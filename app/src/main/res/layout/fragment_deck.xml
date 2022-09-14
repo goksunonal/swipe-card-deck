@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/card_deck_layout"
-            tools:itemCount="5"/>
+            tools:itemCount="5"
+            tools:listitem="@layout/card_deck_layout" />
 
         <Button
             android:id="@+id/button_prev"

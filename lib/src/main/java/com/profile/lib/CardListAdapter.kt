@@ -1,39 +1,39 @@
-package com.profile.cardswipe
+package com.profile.lib
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.profile.lib.Card
 import com.profile.lib.databinding.CardTemplateBinding
 
-class MovieListAdapter() : PagingDataAdapter<Card, MoviePosterViewHolder>(MovieDiffCallBack()) {
+class CardListAdapter : PagingDataAdapter<Card, CardViewHolder>(CardDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviePosterViewHolder {
-        return MoviePosterViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        return CardViewHolder(
             CardTemplateBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: MoviePosterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 }
 
-class MovieDiffCallBack : DiffUtil.ItemCallback<Card>() {
+class CardDiffCallback : DiffUtil.ItemCallback<Card>() {
     override fun areItemsTheSame(oldItem: Card, newItem: Card): Boolean {
-        return false
+        return oldItem.name == newItem.name && oldItem.image == newItem.image
+                && oldItem.status == newItem.status && oldItem.location == newItem.location
     }
 
     override fun areContentsTheSame(oldItem: Card, newItem: Card): Boolean {
-        return false
+        return oldItem == newItem
     }
 }
 
-class MoviePosterViewHolder(private val cardView: CardTemplateBinding) :
+class CardViewHolder(private val cardView: CardTemplateBinding) :
     RecyclerView.ViewHolder(cardView.root) {
     fun bind(item: Card) {
         cardView.card = item
