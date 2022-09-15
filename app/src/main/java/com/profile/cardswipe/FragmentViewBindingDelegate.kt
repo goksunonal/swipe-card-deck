@@ -3,9 +3,9 @@ package com.profile.cardswipe
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
@@ -14,8 +14,7 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
     val fragment: Fragment,
     val viewBindingFactory: (View) -> T,
     val bindLifecycleOwner: Boolean = false
-) :
-    ReadOnlyProperty<Fragment, T> {
+) : ReadOnlyProperty<Fragment, T> {
     private var binding: T? = null
 
     init {
@@ -38,23 +37,17 @@ class FragmentViewBindingDelegate<T : ViewBinding>(
         }
     }
 
-    inner class FragmentLifeCycleObserver : LifecycleObserver {
+    inner class FragmentLifeCycleObserver : DefaultLifecycleObserver {
 
-        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-        fun onCreate() {
-            fragment.viewLifecycleOwnerLiveData.observe(fragment) { lifecycleOwner ->
-                lifecycleOwner.lifecycle.addObserver(ViewLifeCycleObserver())
+        override fun onCreate(owner: LifecycleOwner) {
+            fragment.viewLifecycleOwnerLiveData.observe(fragment) {
                 if (bindLifecycleOwner) {
                     (binding as? ViewDataBinding)?.lifecycleOwner = fragment.viewLifecycleOwner
                 }
             }
         }
-    }
 
-    inner class ViewLifeCycleObserver : LifecycleObserver {
-
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        fun onDestroy() {
+        override fun onDestroy(owner: LifecycleOwner) {
             binding = null
         }
     }

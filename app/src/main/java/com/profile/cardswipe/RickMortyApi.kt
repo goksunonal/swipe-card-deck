@@ -22,8 +22,9 @@ class RickMortyApi {
         }
     }
 
-    suspend fun getCharacters(page: Int): CharacterListModel =
+    suspend fun getCharacters(page: Int): Result<CharacterListModel> = kotlin.runCatching {
         client.get("https://rickandmortyapi.com/api/character") {
             this.parameter("page", page)
         }.body()
+    }
 }

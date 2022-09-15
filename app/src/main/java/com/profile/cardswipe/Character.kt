@@ -1,5 +1,6 @@
 package com.profile.cardswipe
 
+import com.profile.lib.Card
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -16,7 +17,16 @@ data class Character(
     val episode: List<String>,
     val url: String,
     val created: String
-)
+) {
+    fun toCard(): Card {
+        return Card(
+            image,
+            name,
+            status,
+            location.name
+        )
+    }
+}
 
 @Serializable
 data class NameUrlVal(
