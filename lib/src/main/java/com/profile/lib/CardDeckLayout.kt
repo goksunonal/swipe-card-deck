@@ -11,7 +11,6 @@ import com.profile.lib.databinding.CardTemplateBinding
 import com.profile.lib.util.dp
 import com.profile.lib.view.SwipeMaterialCardView
 
-
 class CardDeckLayout : FrameLayout {
     private val addedViews = mutableListOf<SwipeMaterialCardView>()
 
@@ -23,7 +22,7 @@ class CardDeckLayout : FrameLayout {
         defStyleAttr
     )
 
-    fun addCards(list: List<Card>) {
+    fun addCards(list: List<Card>, cardSwipeListener: CardSwipeListener) {
         removeAllViews()
         addedViews.clear()
         list.asReversed().forEach { card ->
@@ -42,11 +41,17 @@ class CardDeckLayout : FrameLayout {
                 (binding.root as SwipeMaterialCardView).setCardSwipeListener(object :
                     CardSwipeListener {
                     override fun onLeftOutside() {
-                        removeView()
+                        removeView {
+                            cardSwipeListener.onNoItemLeft()
+                        }
+                        cardSwipeListener.onLeftOutside()
                     }
 
                     override fun onRightOutside() {
-                        removeView(false)
+                        removeView(false) {
+                            cardSwipeListener.onNoItemLeft()
+                        }
+                        cardSwipeListener.onRightOutside()
                     }
 
                 })
@@ -56,36 +61,7 @@ class CardDeckLayout : FrameLayout {
         }
     }
 
-    fun addCard(card: Card) {
-        this.post {
-            val inflater =
-                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val binding: CardTemplateBinding = CardTemplateBinding.inflate(inflater)
-            val params = LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT
-            )
-            params.gravity = Gravity.CENTER
-            params.marginStart = 40.dp
-            params.marginEnd = 40.dp
-            binding.card = card
-            (binding.root as SwipeMaterialCardView).setCardSwipeListener(object :
-                CardSwipeListener {
-                override fun onLeftOutside() {
-                    removeView()
-                }
-
-                override fun onRightOutside() {
-                    removeView(false)
-                }
-
-            })
-            addedViews.add(binding.root as SwipeMaterialCardView)
-            addView(binding.root, params)
-        }
-    }
-
-    fun removeView(isLeft: Boolean = true) {
+    fun removeView(isLeft: Boolean = true, emptyItemListInvoker: () -> Unit) {
         val lastView = addedViews.last()
         val hide = TranslateAnimation(
             lastView.translationX,
@@ -103,6 +79,7 @@ class CardDeckLayout : FrameLayout {
                 addedViews.removeLast()
                 lastView.isAnimationOn = true
                 invalidate()
+                if (addedViews.isEmpty()) emptyItemListInvoker.invoke()
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
