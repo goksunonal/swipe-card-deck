@@ -9,7 +9,8 @@ import com.profile.lib.model.Card
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: MainRepository = MainRepository()) : ViewModel() {
+class CharacterDeckViewModel(private val repository: CharacterDeckRepository = CharacterDeckRepository()) :
+    ViewModel() {
 
     val characterCards = MutableStateFlow<Resource<List<Card>?>>(Resource.Success(null))
     val pageConfig = PageConfig()

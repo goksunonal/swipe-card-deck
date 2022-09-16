@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.profile.cardswipe.character.MainViewModel" />
+            type="com.profile.cardswipe.character.CharacterDeckViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

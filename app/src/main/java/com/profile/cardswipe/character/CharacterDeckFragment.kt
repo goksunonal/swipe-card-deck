@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class CharacterDeckFragment : Fragment(R.layout.fragment_deck), CardSwipeListener {
     private val binding by viewBinding(FragmentDeckBinding::bind, true)
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<CharacterDeckViewModel>()
     private val progress = ProgressDialogFragment.newInstance()
     private lateinit var dialogRouter: DialogRouter
 

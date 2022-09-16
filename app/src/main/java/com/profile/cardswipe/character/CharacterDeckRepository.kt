@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class MainRepository(private val api: RickMortyApi = RickMortyApi()) {
+class CharacterDeckRepository(private val api: RickMortyApi = RickMortyApi()) {
 
     suspend fun getCharacter(pageNumber: Int): Flow<Resource<Pair<Info, List<Card>>>> {
         return flow {
