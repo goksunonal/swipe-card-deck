@@ -1,10 +1,27 @@
 object Dependencies {
     const val MATERIAL = "com.google.android.material:material"
+    const val PICASSO = "com.squareup.picasso:picasso"
 
     object AndroidX {
         const val CORE = "androidx.core:core-ktx"
         const val COMPAT = "androidx.appcompat:appcompat"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout"
+        const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx"
+
+        object Lifecycle {
+            const val LIVE_DATA = "androidx.lifecycle:lifecycle-livedata-ktx"
+            const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx"
+            const val RUN_TIME = "androidx.lifecycle:lifecycle-runtime-ktx"
+        }
+    }
+
+    object Ktor {
+        const val CORE = "io.ktor:ktor-client-core"
+        const val SERIALIZATION = "io.ktor:ktor-client-serialization"
+        const val LOGGING = "io.ktor:ktor-client-logging"
+        const val ANDROID = "io.ktor:ktor-client-android"
+        const val CONTENT_NEGOTIATION = "io.ktor:ktor-client-content-negotiation"
+        const val JSON = "io.ktor:ktor-serialization-kotlinx-json"
     }
 
     object Test {

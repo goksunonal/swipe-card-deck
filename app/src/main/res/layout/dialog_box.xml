@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0000">
+    android:background="@color/transparent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guideline"
@@ -22,8 +22,8 @@
 
     <View
         android:id="@+id/view_bg"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
         android:background="#ffffff"
         android:paddingBottom="@dimen/spacing_16"
         app:layout_constraintBottom_toBottomOf="@+id/button"
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_16"
         android:layout_marginTop="@dimen/spacing_24"
@@ -55,16 +55,17 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="@dimen/dialog_logo_size"
+        android:layout_height="@dimen/dialog_logo_size"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_warning" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_16"
         android:layout_marginTop="@dimen/spacing_8"
@@ -79,7 +80,7 @@
 
     <TextView
         android:id="@+id/body"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_16"
         android:layout_marginTop="@dimen/spacing_16"

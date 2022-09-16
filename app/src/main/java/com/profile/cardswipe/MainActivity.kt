@@ -3,6 +3,8 @@ package com.profile.cardswipe
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import com.profile.cardswipe.base.viewBinding
+import com.profile.cardswipe.character.CharacterDeckFragment
 import com.profile.cardswipe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (supportFragmentManager.isDestroyed.not()) {
             supportFragmentManager.commit {
-                this.replace(R.id.container, CardDeckFragment(), "tag")
+                this.replace(R.id.container, CharacterDeckFragment(), "tag")
             }
         }
     }

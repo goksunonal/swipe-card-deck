@@ -76,16 +76,16 @@ class SwipeMaterialCardView : MaterialCardView {
             .y(defaultTop)
             .setDuration(500L)
             .setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(p0: Animator?) {
+                override fun onAnimationStart(animation: Animator) {
                     isAnimationOn = true
                 }
 
-                override fun onAnimationEnd(p0: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     isAnimationOn = false
                 }
 
-                override fun onAnimationCancel(p0: Animator?) {}
-                override fun onAnimationRepeat(p0: Animator?) {}
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
             })
             .start()
     }

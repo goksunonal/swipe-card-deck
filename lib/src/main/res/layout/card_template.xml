@@ -6,21 +6,21 @@
 
         <variable
             name="card"
-            type="com.profile.lib.Card" />
+            type="com.profile.lib.model.Card" />
     </data>
 
     <com.profile.lib.view.SwipeMaterialCardView
-        android:id="@+id/cardSwipeView"
+        android:id="@+id/card_swipe_view"
         style="@style/RoundedCardView"
-        android:clickable="false"
-        android:focusable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_32"
         android:animateLayoutChanges="true"
-        android:layout_margin="32dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="8dp"
-        app:strokeColor="#6b8496"
+        android:clickable="false"
+        android:focusable="false"
+        app:cardElevation="@dimen/spacing_8"
+        app:cardMaxElevation="@dimen/spacing_8"
+        app:strokeColor="@color/light_blue"
         app:strokeWidth="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,19 +28,18 @@
             android:layout_height="wrap_content">
 
             <View
-                android:id="@+id/view"
+                android:id="@+id/dummy_bg"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="#FFFFFF"
+                android:layout_height="100dp"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView" />
+                app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/profile_image"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="@dimen/profile_image_size"
                 android:adjustViewBounds="true"
-                android:contentDescription="Profile Image"
                 android:scaleType="fitXY"
                 android:src="@{card.image}"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,53 +47,56 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/card_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:layout_marginTop="@dimen/spacing_8"
                 android:text="@{card.name}"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_16"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintEnd_toEndOf="@id/dummy_bg"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="@id/view"
-                app:layout_constraintTop_toTopOf="@+id/view" />
+                app:layout_constraintStart_toStartOf="@id/dummy_bg"
+                app:layout_constraintTop_toTopOf="@+id/dummy_bg" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/card_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:layout_marginTop="@dimen/spacing_8"
                 android:drawablePadding="4dp"
                 android:text="@{card.status}"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_16"
                 android:textStyle="bold|italic"
                 app:drawableStartCompat="@drawable/ic_account_circle"
-                app:drawableTint="#FF0000"
-                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintEnd_toEndOf="@id/dummy_bg"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="@id/view"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintStart_toStartOf="@id/dummy_bg"
+                app:layout_constraintTop_toBottomOf="@+id/card_name" />
 
 
             <TextView
+                android:id="@+id/card_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:layout_marginTop="@dimen/spacing_8"
                 android:drawablePadding="4dp"
-                android:paddingBottom="16dp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingBottom="@dimen/spacing_16"
+                android:selected="@{true}"
+                android:singleLine="true"
                 android:text="@{card.location.toString()}"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_16"
                 app:drawableStartCompat="@drawable/ic_location_pin"
-                app:drawableTint="#FF0000"
-                app:layout_constraintBottom_toBottomOf="@+id/view"
-                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintBottom_toBottomOf="@+id/dummy_bg"
+                app:layout_constraintEnd_toEndOf="@id/dummy_bg"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="@id/view"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintStart_toStartOf="@id/dummy_bg"
+                app:layout_constraintTop_toBottomOf="@+id/card_status" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.profile.lib.view.SwipeMaterialCardView>
 </layout>

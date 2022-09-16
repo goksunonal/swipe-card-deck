@@ -46,15 +46,17 @@ dependencies {
     testImplementation(Dependencies.Test.JUNIT, Versions.JUNIT)
     androidTestImplementation(Dependencies.Test.EXT_JUNIT, Versions.EXT_JUNIT)
     androidTestImplementation(Dependencies.Test.ESPRESSO_CORE, Versions.ESPRESSO_CORE)
-    implementation("androidx.paging:paging-runtime:3.1.1")
-    implementation("io.ktor:ktor-client-core:2.1.1")
-    implementation("io.ktor:ktor-client-serialization:2.1.1")
-    implementation("io.ktor:ktor-client-logging:2.1.1")
-    implementation("io.ktor:ktor-client-android:2.1.1")
-    implementation("io.ktor:ktor-client-content-negotiation:2.1.1")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.1.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.2")
+
+    implementation(Dependencies.Ktor.CORE, Versions.KTOR)
+    implementation(Dependencies.Ktor.SERIALIZATION, Versions.KTOR)
+    implementation(Dependencies.Ktor.LOGGING, Versions.KTOR)
+    implementation(Dependencies.Ktor.ANDROID, Versions.KTOR)
+    implementation(Dependencies.Ktor.CONTENT_NEGOTIATION, Versions.KTOR)
+    implementation(Dependencies.Ktor.JSON, Versions.KTOR)
+
+    implementation(Dependencies.AndroidX.Lifecycle.RUN_TIME, Versions.LIFECYCLE)
+    implementation(Dependencies.AndroidX.Lifecycle.LIVE_DATA, Versions.LIFECYCLE)
+    implementation(Dependencies.AndroidX.Lifecycle.VIEW_MODEL, Versions.LIFECYCLE)
+
+    implementation(Dependencies.AndroidX.FRAGMENT_KTX, Versions.X_FRAGMENT_KTX)
 }

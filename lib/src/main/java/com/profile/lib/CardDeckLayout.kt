@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.FrameLayout
 import com.profile.lib.databinding.CardTemplateBinding
+import com.profile.lib.model.Card
 import com.profile.lib.util.dp
 import com.profile.lib.view.SwipeMaterialCardView
 
