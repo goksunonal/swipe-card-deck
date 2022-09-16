@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Profile Card Swipe</string>
     <string name="common_ok">Tamam</string>
+    <string name="common_error">Error</string>
+    <string name="error_null_character_list">Error happened when characters retrieved!</string>
+    <string name="error_character_api">Character retrieve failed!</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
 </resources>

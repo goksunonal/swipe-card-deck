@@ -1,4 +1,7 @@
-package com.profile.cardswipe
+package com.profile.cardswipe.character.model
+
+
+const val DEFAULT_PAGE_NUMBER = 1
 
 data class PageConfig(
     var currentPage: Int = 0,
@@ -18,6 +21,6 @@ data class PageConfig(
     }
 
     fun previousPageAvailable(): Boolean {
-        return currentPage > 1
+        return currentPage > DEFAULT_PAGE_NUMBER
     }
 }

@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">Profil Kartı Kaydırma</string>
     <string name="common_ok">Ok</string>
+    <string name="common_error">Hata</string>
+    <string name="error_null_character_list">Karakterleri eklerken bir hata oluştu!</string>
+    <string name="error_character_api">Karakterleri alırken başarısız olundu!</string>
+    <string name="left">Sol</string>
+    <string name="right">Sağ</string>
 </resources>

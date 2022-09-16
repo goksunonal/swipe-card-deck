@@ -52,7 +52,6 @@ class SwipeMaterialCardView : MaterialCardView {
                 MotionEvent.ACTION_DOWN -> {
                     lastX = x
                     lastY = y
-                    //layout(defaultLeft, defaultTop, defaultRight, defaultBottom)
                 }
                 MotionEvent.ACTION_UP -> {
                     if (defaultLeft > (left + (width / 4))) {

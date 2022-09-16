@@ -57,6 +57,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.RUN_TIME, Versions.LIFECYCLE)
     implementation(Dependencies.AndroidX.Lifecycle.LIVE_DATA, Versions.LIFECYCLE)
     implementation(Dependencies.AndroidX.Lifecycle.VIEW_MODEL, Versions.LIFECYCLE)
+    implementation(Dependencies.KOIN_ANDROID, Versions.KOIN)
+    implementation(Dependencies.KOIN_CORE, Versions.KOIN)
 
     implementation(Dependencies.AndroidX.FRAGMENT_KTX, Versions.X_FRAGMENT_KTX)
 }

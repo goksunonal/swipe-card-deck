@@ -12,6 +12,9 @@ import com.profile.lib.model.Card
 import com.profile.lib.util.dp
 import com.profile.lib.view.SwipeMaterialCardView
 
+private const val VERTICAL_MARGIN = 40
+private const val ANIMATION_DURATION = 500L
+
 class CardDeckLayout : FrameLayout {
     private val addedViews = mutableListOf<SwipeMaterialCardView>()
 
@@ -36,8 +39,8 @@ class CardDeckLayout : FrameLayout {
                     LayoutParams.WRAP_CONTENT
                 )
                 params.gravity = Gravity.CENTER
-                params.marginStart = 40.dp
-                params.marginEnd = 40.dp
+                params.marginStart = VERTICAL_MARGIN.dp
+                params.marginEnd = VERTICAL_MARGIN.dp
                 binding.card = card
                 (binding.root as SwipeMaterialCardView).setCardSwipeListener(object :
                     CardSwipeListener {
@@ -71,7 +74,7 @@ class CardDeckLayout : FrameLayout {
             0f
         )
         hide.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
+            override fun onAnimationStart(animation: Animation?) {
                 lastView.isAnimationOn = true
             }
 
@@ -83,10 +86,10 @@ class CardDeckLayout : FrameLayout {
                 if (addedViews.isEmpty()) emptyItemListInvoker.invoke()
             }
 
-            override fun onAnimationRepeat(p0: Animation?) {
+            override fun onAnimationRepeat(animation: Animation?) {
             }
         })
-        hide.duration = 500
+        hide.duration = ANIMATION_DURATION
         lastView.startAnimation(hide)
     }
 }

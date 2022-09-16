@@ -15,4 +15,5 @@ object Versions {
     const val LIFECYCLE = "2.5.1"
     const val X_FRAGMENT_KTX = "1.5.2"
     const val PICASSO = "2.8"
+    const val KOIN = "3.2.1"
 }

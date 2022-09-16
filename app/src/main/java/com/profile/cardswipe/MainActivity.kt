@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.profile.cardswipe.base.viewBinding
 import com.profile.cardswipe.character.CharacterDeckFragment
+import com.profile.cardswipe.character.characterDeckModule
 import com.profile.cardswipe.databinding.ActivityMainBinding
+import org.koin.core.context.loadKoinModules
 
 class MainActivity : AppCompatActivity() {
     private val binding by viewBinding(ActivityMainBinding::inflate)
@@ -15,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (supportFragmentManager.isDestroyed.not()) {
             supportFragmentManager.commit {
-                this.replace(R.id.container, CharacterDeckFragment(), "tag")
+                loadKoinModules(characterDeckModule)
+                this.replace(R.id.container, CharacterDeckFragment(), CharacterDeckFragment.TAG)
             }
         }
     }

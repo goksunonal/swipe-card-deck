@@ -1,6 +1,8 @@
 object Dependencies {
     const val MATERIAL = "com.google.android.material:material"
     const val PICASSO = "com.squareup.picasso:picasso"
+    const val KOIN_ANDROID = "io.insert-koin:koin-android"
+    const val KOIN_CORE = "io.insert-koin:koin-core"
 
     object AndroidX {
         const val CORE = "androidx.core:core-ktx"
