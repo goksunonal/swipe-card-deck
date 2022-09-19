@@ -1,6 +1,6 @@
 # Swipe Card Deck
 
-Tinder-like application where cards are removed from the list by swiping and pagination is made.
+Tinder-like application where cards are removed from the list by swiping with pages.
 ## Used-Pattern, Techologies
 
 
